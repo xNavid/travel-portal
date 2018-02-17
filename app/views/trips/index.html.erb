@@ -1,19 +1,35 @@
-<h1>All listed trips</h1>
-<p><%= link_to 'Create new', new_trip_path %></p>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Start date</th>
-  </tr>
-  <% @trips.each do |trip| %>
-  <tr>
-    <td><%= trip.title %></td>
-    <td><%= trip.description %></td>
-    <td><%= trip.start_date %></td>
-    <td><%= link_to 'Show', trip_path(trip) %></td>
-    <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-    <td><%= link_to 'Delete', trip_path(trip), method: :delete, data: { confirm: "Are you sure?" } %></td>
-  </tr>
-  <% end %>
-</table>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-10">
+            <h2 class="panel-title">All listed trips</h2>
+          </div>
+          <div class="col-md-2">
+            <%= link_to 'New Trip', new_trip_path, class: 'btn btn-xs btn-success' %>
+          </div>
+        </div>
+        
+      </div>
+      <div class="panel-body">
+        <table class="table borderless">
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Start date</th>
+          </tr>
+          <% @trips.each do |trip| %>
+          <tr>
+            <td><%= link_to trip.title, trip_path(trip) %></td>
+            <td><%= truncate(trip.description, length: 30) %></td>
+            <td><%= trip.start_date %></td>
+            <td><%= link_to 'Details', trip_path(trip) %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
