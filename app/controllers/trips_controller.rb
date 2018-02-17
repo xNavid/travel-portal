@@ -10,7 +10,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     
     if @trip.save
-      flash[:notice] = "Trip successfully created !"
+      flash[:success] = "Trip successfully created !"
       redirect_to trip_path(@trip)
     else
       render 'new'
@@ -25,13 +25,13 @@ class TripsController < ApplicationController
   def destroy
     #@trip = Trip.find(params[:id])
     @trip.destroy
-    flash[:notice] = "Trip successfully deleted !"
+    flash[:danger] = "Trip successfully deleted !"
     redirect_to trips_path
   end
   def update
     #@trip = Trip.find(params[:id])
     if @trip.update(trip_params)
-      flash[:notice] = "Trip details updated !"
+      flash[:success] = "Trip details updated !"
       redirect_to trip_path(@trip)
     else
       render 'edit'

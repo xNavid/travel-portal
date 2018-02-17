@@ -1,12 +1,4 @@
-<ul>
-  <% if @trip.errors.any? %>
-  <p>Following errors prevented the article from getting created: </p>
-  <% @trip.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-<% end %>
-</ul>
-
+<%= render 'shared/errors', obj: @trip %>
 
 <%= form_for(@trip, :html => { class: "form-horizontal", role: "form" }) do |f| %>
   <div class="row">
