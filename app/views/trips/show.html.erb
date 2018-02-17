@@ -1,31 +1,57 @@
-<h1>Trip details</h1>
-<p>
-  Title: <%= @trip.title %>
-</p>
-<p>
-  Description: <%= @trip.description %>
-</p>
-<p>
-  Start date: <%= @trip.start_date %>
-</p>
-<P>
-  End date: <%= @trip.end_date %>
-</P>
-<p>
-  Travel mode: <%= @trip.travel_mode %>
-</p>
-<p>
-  Ticket cost: <%= @trip.ticket_cost %>
-</p>
-<p>
-  Home cab cost: <%= @trip.home_cab_cost %>
-</p>
-<p>
-  Destination cab cost: <%= @trip.destination_cab_cost %>
-</p>
-<p>
-  Hotel cost: <%= @trip.hotel_cost %>
-</p>
-<p>
-  Local transport: <%= @trip.local_transport %>
-</p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">Trip details</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table borderless">
+          <tr>
+            <th>Title</th>
+            <td><%= @trip.title %></td>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <td><%= @trip.description %></td>
+          </tr>
+          <tr>
+            <th>Start date</th>
+            <td><%= @trip.start_date %></td>
+          </tr>
+          <tr>
+            <th>End date</th>
+            <td><%= @trip.end_date %></td>
+          </tr>
+          <tr>
+            <th>Travel mode</th>
+            <td><%= @trip.travel_mode %></td>
+          </tr>
+          <tr>
+            <th>Ticket cost</th>
+            <td><%= @trip.ticket_cost %> MYR</td>
+          </tr>
+          <tr>
+            <th>Home cab cost</th>
+            <td><%= @trip.home_cab_cost %> MYR</td>
+          </tr>
+          <tr>
+            <th>Destination cab cost</th>
+            <td><%= @trip.destination_cab_cost %> MYR</td>
+          </tr>
+          <tr>
+            <th>Hotel cost</th>
+            <td><%= @trip.hotel_cost %> MYR</td>
+          </tr>
+          <tr>
+            <th>Local transport</th>
+            <td><%= @trip.local_transport %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Edit", edit_trip_path(@trip), class: "btn btn-default" %>
+        <%= link_to "Delete", trip_path(@trip), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>
