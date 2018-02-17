@@ -21,6 +21,12 @@ class TripsController < ApplicationController
   def edit
     @trip = Trip.find(params[:id])
   end
+  def destroy
+    @trip = Trip.find(params[:id])
+    @trip.destroy
+    flash[:notice] = "Trip successfully deleted !"
+    redirect_to trips_path
+  end
   def update
     @trip = Trip.find(params[:id])
     if @trip.update(trip_params)
