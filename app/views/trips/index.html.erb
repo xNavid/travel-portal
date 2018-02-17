@@ -1,0 +1,18 @@
+<h1>All listed trips</h1>
+<p><%= link_to 'Create new', new_trip_path %></p>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Start date</th>
+  </tr>
+  <% @trips.each do |trip| %>
+  <tr>
+    <td><%= trip.title %></td>
+    <td><%= trip.description %></td>
+    <td><%= trip.start_date %></td>
+    <td><%= link_to 'Show', trip_path(trip) %></td>
+    <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
+  </tr>
+  <% end %>
+</table>
