@@ -1,0 +1,15 @@
+<table class="table borderless">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Start date</th>
+  </tr>
+  <% obj.each do |trip| %>
+  <tr>
+    <td><%= link_to trip.title, trip_path(trip) %></td>
+    <td><%= truncate(trip.description, length: 30) %></td>
+    <td><%= trip.start_date %></td>
+    <td><%= link_to 'Details', trip_path(trip) %></td>
+  </tr>
+  <% end %>
+</table>
