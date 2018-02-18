@@ -55,8 +55,10 @@
       <div class="panel-footer">
         <div class="row">
           <div class="col-md-7">
-            <%= link_to "Edit", edit_trip_path(@trip), class: "btn btn-default" %>
-            <%= link_to "Delete", trip_path(@trip), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+            <% if logged_in? && current_user == @trip.user %>
+              <%= link_to "Edit", edit_trip_path(@trip), class: "btn btn-default" %>
+              <%= link_to "Delete", trip_path(@trip), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+            <% end %>
           </div>
           <div class="col-md-5">
             <span>Created by:</span>

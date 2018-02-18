@@ -1,9 +1,11 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:edit, :update, :show, :destroy]
   def index
+    redirect_to login_path if !logged_in?
     @trips = Trip.all
   end
   def new
+    redirect_to login_path if !logged_in?
     @trip = Trip.new
   end
   def create
@@ -16,9 +18,11 @@ class TripsController < ApplicationController
     end
   end
   def show
+    redirect_to login_path if !logged_in?
     #@trip = Trip.find(params[:id])
   end
   def edit
+    redirect_to login_path if !logged_in?
     #@trip = Trip.find(params[:id])
   end
   def destroy
