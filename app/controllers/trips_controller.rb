@@ -53,7 +53,7 @@ class TripsController < ApplicationController
     end
     
   def require_same_user
-    if current_user != @trip.user
+    if current_user != @trip.user and !current_user.admin?
       flash[:danger] = "Access denied !"
       redirect_to root_path
     end

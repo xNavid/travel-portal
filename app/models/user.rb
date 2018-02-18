@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :trips
+  has_many :trips, dependent: :destroy
   # turn email value to lower case
   before_save { self.email = email.downcase }
   validates :username, presence: true, 
