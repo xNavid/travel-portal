@@ -20,3 +20,11 @@ body {
 .borderless td, .borderless th {
     border: none !important;
 }
+
+.jumbotron {
+  color: #fff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 600px;
+  background-image: asset-url('airplane.jpeg');
+}
