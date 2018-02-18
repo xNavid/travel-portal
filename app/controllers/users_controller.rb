@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
+  before_action :require_same_user, only: [:edit, :update]
   def index
-    redirect_to login_path if !logged_in?
+    
     @users = User.all
   end
   def new
@@ -17,12 +18,9 @@ class UsersController < ApplicationController
     end
   end
   def show
-    # redirect to login if not signed in
-    redirect_to login_path if !logged_in?
     #@user = User.find(params[:id])
   end
   def edit
-    redirect_to login_path if !logged_in?
     #@user = User.find(params[:id])
   end
   def update
@@ -42,4 +40,11 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+  
+  def require_same_user
+    if current_user != @user
+      flash[:danger] = "Access denied !"
+      redirect_to root_path
+    end
+  end
 end

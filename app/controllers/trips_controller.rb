@@ -1,11 +1,13 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:edit, :update, :show, :destroy]
+  before_action :require_user
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   def index
-    redirect_to login_path if !logged_in?
+    
     @trips = Trip.all
   end
   def new
-    redirect_to login_path if !logged_in?
+    
     @trip = Trip.new
   end
   def create
@@ -18,11 +20,11 @@ class TripsController < ApplicationController
     end
   end
   def show
-    redirect_to login_path if !logged_in?
+    
     #@trip = Trip.find(params[:id])
   end
   def edit
-    redirect_to login_path if !logged_in?
+    
     #@trip = Trip.find(params[:id])
   end
   def destroy
@@ -48,4 +50,11 @@ class TripsController < ApplicationController
       params.require(:trip).permit(:title, :description, :start_date, :end_date, :travel_mode, :ticket_cost, 
       :home_cab_cost, :destination_cab_cost, :hotel_cost, :local_transport)
     end
+    
+  def require_same_user
+    if current_user != @trip.user
+      flash[:danger] = "Access denied !"
+      redirect_to root_path
+    end
+  end
 end
