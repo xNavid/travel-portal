@@ -53,8 +53,16 @@
         </table>
       </div>
       <div class="panel-footer">
-        <%= link_to "Edit", edit_trip_path(@trip), class: "btn btn-default" %>
-        <%= link_to "Delete", trip_path(@trip), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        <div class="row">
+          <div class="col-md-7">
+            <%= link_to "Edit", edit_trip_path(@trip), class: "btn btn-default" %>
+            <%= link_to "Delete", trip_path(@trip), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          </div>
+          <div class="col-md-5">
+            <span>Created by:</span>
+            <%= link_to @trip.user.username, user_path(@trip.user) %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
