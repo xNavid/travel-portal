@@ -1,0 +1,22 @@
+<%= render 'shared/errors', obj: @manager %>
+<%= form_for(@manager, :html => { class: "form-horizontal", role: "form" }) do |f| %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, placeholder: "username", class: "form-control", autofocus: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, placeholder: "you@mail.com", class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, placeholder: "********", class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <%= f.submit(@manager.new_record? ? "Sign Up" : "Update", class: "btn btn-lg btn-success btn-block") %>
+      </div>
+    </div>
+  </div>
+<% end %>

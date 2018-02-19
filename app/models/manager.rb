@@ -1,4 +1,6 @@
 class Manager < ActiveRecord::Base
+  has_many :trips
+  has_many :users, through: :trips
   before_save { self.email = email.downcase }
   validates :username, presence: true, 
             uniqueness: { case_sensitive: false }, 

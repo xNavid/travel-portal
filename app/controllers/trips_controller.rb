@@ -49,7 +49,7 @@ class TripsController < ApplicationController
     end
     def trip_params
       params.require(:trip).permit(:title, :description, :start_date, :end_date, :travel_mode, :ticket_cost, 
-      :home_cab_cost, :destination_cab_cost, :hotel_cost, :local_transport)
+      :home_cab_cost, :destination_cab_cost, :hotel_cost, :local_transport, :manager_id)
     end
     
   def require_same_user

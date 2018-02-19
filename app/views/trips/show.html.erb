@@ -46,6 +46,10 @@
             <th>Local transport</th>
             <td><%= @trip.local_transport %></td>
           </tr>
+          <tr>
+            <th>Assigned to</th>
+            <td><%= @trip.manager.username %></td>
+          </tr>
           <tr class="info">
             <th>Total cost</th>
             <th><%= @trip.ticket_cost + @trip.home_cab_cost + @trip.destination_cab_cost + @trip.hotel_cost %> MYR</th>

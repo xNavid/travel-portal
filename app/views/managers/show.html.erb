@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h2 class="panel-title"><%= @manager.username %> ( <%= @manager.email %> )</h2>
+      </div>
+      <div class="panel-body">
+        <%= render 'trips/trip', obj: @manager.trips %>
+      </div>
+      <div class="panel-footer">
+        <% if logged_in? and current_manager.admin? %>
+          <%= link_to "Delete manager", manager_path(@manager), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        <% end %>
+    </div>
+  </div>
+</div>

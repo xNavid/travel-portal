@@ -1,0 +1,26 @@
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">All Managers</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table borderless">
+        <tr>
+          <th>Username</th>
+          <th>Trips</th>
+        </tr>
+        <% @managers.each do |manager| %>
+        <tr>
+          <td><%= link_to manager.username, manager_path(manager) %></td>
+          
+          <td><%= pluralize(manager.trips.count, "trip") if manager.trips %></td>
+          
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
